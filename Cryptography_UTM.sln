@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lab_03", "lab_03", "{7C8EE59B-1BA8-D2BE-7456-98F54D7E40CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "code", "code", "{E86E9B04-8173-60CE-725A-D6CCB462213B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "playfair", "lab_03\code\playfair\playfair.csproj", "{8B36AEEB-93BF-C691-0F60-9C564857D24E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B36AEEB-93BF-C691-0F60-9C564857D24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B36AEEB-93BF-C691-0F60-9C564857D24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B36AEEB-93BF-C691-0F60-9C564857D24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B36AEEB-93BF-C691-0F60-9C564857D24E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E86E9B04-8173-60CE-725A-D6CCB462213B} = {7C8EE59B-1BA8-D2BE-7456-98F54D7E40CE}
+		{8B36AEEB-93BF-C691-0F60-9C564857D24E} = {E86E9B04-8173-60CE-725A-D6CCB462213B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9C21D5C-51B4-44CD-B785-F824386A7FA7}
+	EndGlobalSection
+EndGlobal

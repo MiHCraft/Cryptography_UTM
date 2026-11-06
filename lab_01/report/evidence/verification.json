@@ -1,0 +1,542 @@
+[
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 1,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 2,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 3,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 4,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 5,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 6,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 7,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 8,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 9,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 10,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 11,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 12,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 13,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 14,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 15,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 16,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 17,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 18,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 19,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 20,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 21,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 22,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 23,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 24,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 25,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 26,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 27,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 28,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 29,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "1",
+    "keyword": null,
+    "key": 30,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 1,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 2,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 3,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 4,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 5,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 6,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 7,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 8,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 9,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 10,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 11,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 12,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 13,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 14,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 15,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 16,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 17,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 18,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 19,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 20,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 21,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 22,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 23,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 24,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 25,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 26,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 27,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 28,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 29,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "criptografie",
+    "key": 30,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 1,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 2,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 3,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 4,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 5,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 6,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 7,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 8,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 9,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 10,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 11,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 12,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 13,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 14,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 15,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 16,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 17,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 18,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 19,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 20,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 21,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 22,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 23,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 24,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 25,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 26,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 27,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 28,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 29,
+    "all_31_letters_roundtrip": "PASS"
+  },
+  {
+    "cipher": "2",
+    "keyword": "ştiinţă",
+    "key": 30,
+    "all_31_letters_roundtrip": "PASS"
+  }
+]

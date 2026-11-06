@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.4)  12 OCT 2026 18:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.4)  14 OCT 2026 20:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
+**main.tex main.pdf
 (./main.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -687,21 +687,16 @@ Package: chngcntr 2018/04/09 v1.1a change counter resetting
 Package chngcntr Info: \counterwithout already defined.
 (chngcntr)             Quitting chngcntr on input line 21.
 ))
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
+6.
 
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup6
-\symAMSb=\mathgroup7
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ))
-(/usr/local/texlive/2025/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks34
-\verbatim@line=\toks35
-\verbatim@in@stream=\read3
+(/usr/local/texlive/2025/texmf-dist/tex/latex/combelow/combelow.sty
+Package: combelow 2010/05/02 v0.99f comma below command
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -723,26 +718,61 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count359
 \@thisrulewidth=\dimen256
 )
+(/usr/local/texlive/2025/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+
 (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \col@sep=\dimen257
 \ar@mcellbox=\box61
 \extrarowheight=\dimen258
-\NC@list=\toks36
+\NC@list=\toks34
 \extratabsurround=\skip122
 \backup@length=\skip123
 \ar@cellbox=\box62
+)
+\TX@col@width=\dimen259
+\TX@old@table=\dimen260
+\TX@old@col=\dimen261
+\TX@target=\dimen262
+\TX@delta=\dimen263
+\TX@cols=\count360
+\TX@ftn=\toks35
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2025/02/11 v3.2a Micro-typographical refinements (RS)
+\MT@toks=\toks36
+\MT@tempbox=\box63
+\MT@count=\count361
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
+LaTeX Info: Redefining \leftprotrusion on input line 1088.
+\MT@prot@toks=\toks37
+LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen264
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count362
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2025/02/11 v3.2a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip124
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2025/02/11 v3.2a microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-6.
 
-(/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-)
 
 LaTeX Warning: Unused global option(s):
     [14pt].
@@ -750,48 +780,48 @@ LaTeX Warning: Unused global option(s):
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-\c@lstlisting=\count360
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+\c@lstlisting=\count363
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: scrextend package is loaded.
-\caption@addmargin@hsize=\dimen259
-\caption@addmargin@linewidth=\dimen260
+\caption@addmargin@hsize=\dimen265
+\caption@addmargin@linewidth=\dimen266
 Package caption Info: End \AtBeginDocument code.
 Package newfloat Info: `float' package detected.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count361
-\scratchdimen=\dimen261
-\scratchbox=\box63
-\nofMPsegments=\count362
-\nofMParguments=\count363
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count364
-\MPscratchDim=\dimen262
-\MPnumerator=\count365
-\makeMPintoPDFobject=\count366
-\everyMPtoPDFconversion=\toks38
+\scratchcounter=\count364
+\scratchdimen=\dimen267
+\scratchbox=\box64
+\nofMPsegments=\count365
+\nofMParguments=\count366
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count367
+\MPscratchDim=\dimen268
+\MPnumerator=\count368
+\makeMPintoPDFobject=\count369
+\everyMPtoPDFconversion=\toks39
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -835,47 +865,78 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 16.
+Package hyperref Info: Link coloring ON on input line 31.
 (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
- (./title_page.tex
-<./UTM_Logo.png, id=36, 311.1625pt x 163.61125pt>
-File: ./UTM_Logo.png Graphic file (type png)
-<use ./UTM_Logo.png>
-Package pdftex.def Info: ./UTM_Logo.png  used on input line 16.
+LaTeX Info: Redefining \microtypecontext on input line 31.
+Package microtype Info: Applying patch `item' on input line 31.
+Package microtype Info: Applying patch `toc' on input line 31.
+Package microtype Info: Applying patch `eqnum' on input line 31.
+Package microtype Info: Applying patch `footnote' on input line 31.
+Package microtype Info: Applying patch `verbatim' on input line 31.
+LaTeX Info: Redefining \microtypesetup on input line 31.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 31.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+(./title_page.tex
+<UTM_Logo.png, id=88, 311.1625pt x 163.61125pt>
+File: UTM_Logo.png Graphic file (type png)
+<use UTM_Logo.png>
+Package pdftex.def Info: UTM_Logo.png  used on input line 10.
 (pdftex.def)             Requested size: 128.0374pt x 67.3232pt.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 50.
+ 34.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `ztmcm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 50.
+ 34.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 50.
+ 34.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 50.
+ 34.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 3
+4.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
 
 
 [1
@@ -893,105 +954,181 @@ al/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc} <./UTM_Logo.png>])
 
 ]
 Chapter 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
 
 
 [3
 
 ]
-Chapter 2.
-<./img/img_01.png, id=63, 708.6475pt x 663.47874pt>
-File: ./img/img_01.png Graphic file (type png)
-<use ./img/img_01.png>
-Package pdftex.def Info: ./img/img_01.png  used on input line 110.
-(pdftex.def)             Requested size: 419.96643pt x 393.20049pt.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
 
 [4
 
-]
-<./img/img_02.png, id=71, 705.63625pt x 403.5075pt>
-File: ./img/img_02.png Graphic file (type png)
-<use ./img/img_02.png>
-Package pdftex.def Info: ./img/img_02.png  used on input line 123.
-(pdftex.def)             Requested size: 419.96643pt x 240.15459pt.
+{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+Chapter 2.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 139.
 
+(../code/Program.cs
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 10.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 10.
+) (../code/Program.cs) (../code/Program.cs)
 
-[5 <./img/img_01.png>]
-<./img/img_03.png, id=78, 1477.52pt x 959.585pt>
-File: ./img/img_03.png Graphic file (type png)
-<use ./img/img_03.png>
-Package pdftex.def Info: ./img/img_03.png  used on input line 136.
-(pdftex.def)             Requested size: 419.96643pt x 272.75246pt.
-<./img/img_04.png, id=79, 653.44125pt x 565.11125pt>
-File: ./img/img_04.png Graphic file (type png)
-<use ./img/img_04.png>
-Package pdftex.def Info: ./img/img_04.png  used on input line 145.
-(pdftex.def)             Requested size: 419.96643pt x 363.19621pt.
+[5
 
+] (../code/Program.cs) (../code/Program.cs) (../code/Program.cs)
 
-[6 <./img/img_02.png> <./img/img_03.png>]
-<./img/img_05.png, id=88, 636.3775pt x 226.8475pt>
-File: ./img/img_05.png Graphic file (type png)
-<use ./img/img_05.png>
-Package pdftex.def Info: ./img/img_05.png  used on input line 158.
-(pdftex.def)             Requested size: 419.96643pt x 149.7025pt.
+[6
 
-Chapter 3.
+] (../code/Program.cs) (../code/Program.cs)
 
+[7
 
-[7 <./img/img_04.png> <./img/img_05.png>]
-<./img/img_06.png, id=98, 703.62875pt x 209.78375pt>
-File: ./img/img_06.png Graphic file (type png)
-<use ./img/img_06.png>
-Package pdftex.def Info: ./img/img_06.png  used on input line 177.
-(pdftex.def)             Requested size: 419.96643pt x 125.20859pt.
+] (../code/Program.cs) (../code/Program.cs)
 
+[8
 
-[8 <./img/img_06.png>]
-Chapter 4.
-
+] (../code/Program.cs) (../code/Program.cs) (../code/Program.cs)
 
 [9
 
 ]
+Chapter 3.
+<img/standard_encrypt.png, id=349, 1102.1175pt x 613.29124pt>
+File: img/standard_encrypt.png Graphic file (type png)
+<use img/standard_encrypt.png>
+Package pdftex.def Info: img/standard_encrypt.png  used on input line 246.
+(pdftex.def)             Requested size: 512.14963pt x 284.99966pt.
+
+
+[10
+
+ <./img/standard_encrypt.png>]
+<img/standard_decrypt.png, id=356, 1102.1175pt x 613.29124pt>
+File: img/standard_decrypt.png Graphic file (type png)
+<use img/standard_decrypt.png>
+Package pdftex.def Info: img/standard_decrypt.png  used on input line 257.
+(pdftex.def)             Requested size: 512.14963pt x 284.99966pt.
+
+
+[11
+
+ <./img/standard_decrypt.png>]
+<img/two_key_encrypt.png, id=362, 1102.1175pt x 707.64375pt>
+File: img/two_key_encrypt.png Graphic file (type png)
+<use img/two_key_encrypt.png>
+Package pdftex.def Info: img/two_key_encrypt.png  used on input line 273.
+(pdftex.def)             Requested size: 512.14963pt x 328.84578pt.
+
+
+[12
+
+ <./img/two_key_encrypt.png>]
+<img/two_key_decrypt.png, id=369, 1102.1175pt x 707.64375pt>
+File: img/two_key_decrypt.png Graphic file (type png)
+<use img/two_key_decrypt.png>
+Package pdftex.def Info: img/two_key_decrypt.png  used on input line 285.
+(pdftex.def)             Requested size: 512.14963pt x 328.84578pt.
+
+
+[13
+
+ <./img/two_key_decrypt.png>]
+<img/invalid_input.png, id=377, 1102.1175pt x 499.8675pt>
+File: img/invalid_input.png Graphic file (type png)
+<use img/invalid_input.png>
+Package pdftex.def Info: img/invalid_input.png  used on input line 305.
+(pdftex.def)             Requested size: 512.14963pt x 232.29106pt.
+
+
+[14
+
+ <./img/invalid_input.png>]
+<img/invalid_keyword.png, id=384, 1102.1175pt x 461.725pt>
+File: img/invalid_keyword.png Graphic file (type png)
+<use img/invalid_keyword.png>
+Package pdftex.def Info: img/invalid_keyword.png  used on input line 315.
+(pdftex.def)             Requested size: 512.14963pt x 214.56604pt.
+
+
+[15
+
+ <./img/invalid_keyword.png>]
+<img/romanian_letters.png, id=391, 1102.1175pt x 613.29124pt>
+File: img/romanian_letters.png Graphic file (type png)
+<use img/romanian_letters.png>
+Package pdftex.def Info: img/romanian_letters.png  used on input line 323.
+(pdftex.def)             Requested size: 486.54057pt x 270.74734pt.
+
+
+[16
+
+ <./img/romanian_letters.png>] (./conclusion.tex
+Chapter 4.
+)
+
+[17
+
+] (./bibliography.tex
+Underfull \hbox (badness 10000) in paragraph at lines 10--14
+[]\T1/ptm/m/n/12 (+20) Pancenco, Mi-hail. \T1/ptm/m/it/12 (+20) Cryp-tog-ra-phy
+_UTM\T1/ptm/m/n/12 (+20) . Ro-ma-nian Cae-sar Ci-pher im-ple-men-ta-tion.
+ []
+
+)
 
 Package caption Warning: Unused \captionsetup[subfigure] on input line 325.
 See the caption package documentation for explanation.
 
 
-Package caption Warning: Unused \captionsetup[lstlisting] on input line 331.
-See the caption package documentation for explanation.
 
+[18
 
-Package caption Warning: Unused \captionsetup[table] on input line 337.
-See the caption package documentation for explanation.
-
-(./main.aux)
+] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 73D5151051A3B1EC13FA2AD9D94004AE;1125.
+(rerunfilecheck)             Checksum: 9FC09EB2DB60BC149AAF9EBCA7C95E2A;4302.
  ) 
 Here is how much of TeX's memory you used:
- 19436 strings out of 473190
- 318372 string characters out of 5715800
- 874286 words of memory out of 5000000
- 42344 multiletter control sequences out of 15000+600000
- 585838 words of font info for 85 fonts, out of 8000000 for 9000
+ 22144 strings out of 473190
+ 361867 string characters out of 5715800
+ 1500694 words of memory out of 5000000
+ 44497 multiletter control sequences out of 15000+600000
+ 642772 words of font info for 285 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 123i,11n,121p,369b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-</usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/loca
-l/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive
-/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texm
-f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (9 pages, 748430 bytes).
+ 123i,15n,121p,1010b,1576s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit0900.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/
+local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/lo
+cal/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/
+texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/20
+25/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-d
+ist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (18 pages, 671251 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 100 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 455 compressed objects within 5 object streams
+ 233 named destinations out of 1000 (max. 500000)
+ 94929 words of extra memory for PDF output out of 106986 (max. 10000000)
 

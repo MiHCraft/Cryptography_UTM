@@ -1,0 +1,4 @@
+Cipher: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Plain:  BQFUJYNCRGVKZODSHWLAPETIXM
+
+M -> Z is inferred by permutation completion: M does not occur in variant 19.

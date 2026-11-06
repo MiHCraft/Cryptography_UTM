@@ -1,0 +1,12 @@
+Normalized: ȘTIINȚĂȘIȚARĂ
+Insert X between repeated I letters.
+Pairs: ȘT IX IN ȚĂ ȘI ȚA RĂ
+ȘT -> UI  rectangle
+IX -> AI  same column
+IN -> TL  rectangle
+ȚĂ -> QD  rectangle
+ȘI -> XA  same column
+ȚA -> ȘF  rectangle
+RĂ -> CÂ  rectangle
+
+Ciphertext: UIAITLQDXAȘFCÂ

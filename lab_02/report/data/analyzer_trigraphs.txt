@@ -1,0 +1,5 @@
+The most common trigraphs in the english language are:
+THE,AND,THA,ENT,ION,TIO,FOR,NDE,HAS,NCE,TIS,OFT,MEN
+
+The most common trigraphs in the message are:
+WQV,QTW,WQT,ASV,VGW,XGJ,QVI,TGO,WXN,XNG,FPW,NDS,DSO

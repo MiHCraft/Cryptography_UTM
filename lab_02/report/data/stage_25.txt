@@ -1,0 +1,3 @@
+from these two fundamental principles for selecting usable fieldciphers, kerckhoffs deduced 
+six specific requirements: (1) the systemshould be, if not theoretically unbreakable, 
+unbreakable in practice; (2)compromise of the system should not inconvenience the 

@@ -1,0 +1,8 @@
+Normalized: SALUT
+Add X after the final T.
+Pairs: SA LU TX
+SA -> VD  same column
+LU -> MȚ  rectangle
+TX -> XÂ  same column
+
+Ciphertext: VDMȚXÂ

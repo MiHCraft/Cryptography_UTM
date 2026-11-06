@@ -1,0 +1,20 @@
+
+=== Romanian Caesar Cipher ===
+1. Standard Caesar Cipher
+2. Two-Key Caesar Cipher
+0. Exit
+Choose cipher: 2
+
+1. Encrypt
+2. Decrypt
+Choose operation: 1
+Enter numeric key (1-30): -1
+Invalid key. Enter an integer between 1 and 30.
+Enter numeric key (1-30): 30
+Enter keyword (at least 7 letters): secret
+Invalid keyword: Keyword must contain at least 7 letters.
+Enter keyword (at least 7 letters): cripto1
+Invalid keyword: Character '1' is not allowed. Allowed letters: AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ.
+Enter keyword (at least 7 letters): cripto grafie
+Invalid keyword: Character ' ' is not allowed. Allowed letters: AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ.
+Enter keyword (at least 7 letters): 

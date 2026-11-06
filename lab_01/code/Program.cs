@@ -1,88 +1,93 @@
 using System;
 
-class CaesarCipher
+// ============================================================
+// Romanian Alphabet
+// Shared alphabet operations for both cipher implementations
+// ============================================================
+
+static class RomanianAlphabet
 {
-    private readonly string alphabet = "aăâbcdefghiîjklmnopqrsștțuvwxyz".ToUpperInvariant();
+    public const string Letters = "AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ";
+    public const int Size = 31;
 
-    public string Encrypt(string message, int key)
+    public static string Normalize(string text)
     {
-        ValidateKey(key);
-        message = PrepareMessage(message);
+        ArgumentNullException.ThrowIfNull(text);
 
-        int[] numbers = ConvertToNumbers(message);
-        int[] encryptedNumbers = ShiftNumbers(numbers, key);
-
-        return ConvertToString(encryptedNumbers);
+        return text.Replace('ş', 'ș')
+            .Replace('Ş', 'Ș')
+            .Replace('ţ', 'ț')
+            .Replace('Ţ', 'Ț')
+            .ToUpperInvariant();
     }
 
-    public string Decrypt(string message, int key)
+    public static void Validate(string text, bool allowSpaces = true)
     {
-        ValidateKey(key);
-        message = PrepareMessage(message);
-
-        int[] numbers = ConvertToNumbers(message);
-        int[] decryptedNumbers = ShiftNumbers(numbers, -key);
-
-        return ConvertToString(decryptedNumbers);
-    }
-
-    private string PrepareMessage(string message)
-    {
-        message = Normalize(message);
-        Validate(message);
-
-        return message.Replace(" ", "").ToUpperInvariant();
-    }
-
-    private string Normalize(string message)
-    {
-        return message.Replace('ş', 'ș').Replace('Ş', 'Ș').Replace('ţ', 'ț').Replace('Ţ', 'Ț');
-    }
-
-    private void Validate(string message)
-    {
-        foreach (char letter in message.ToUpperInvariant())
+        foreach (char letter in text)
         {
-            if (letter != ' ' && !alphabet.Contains(letter))
+            if (allowSpaces && letter == ' ')
+                continue;
+
+            if (!Letters.Contains(letter))
             {
-                throw new ArgumentException($"Character '{letter}' is not allowed.");
+                throw new ArgumentException(
+                    $"Character '{letter}' is not allowed. "
+                        + $"Allowed letters: {Letters}"
+                        + (allowSpaces ? " and spaces." : ".")
+                );
             }
         }
     }
 
-    private void ValidateKey(int key)
+    public static string Prepare(string text)
     {
-        if (key < 1 || key >= alphabet.Length)
+        text = Normalize(text);
+        Validate(text);
+
+        return text.Replace(" ", "");
+    }
+
+    public static string PrepareKeyword(string keyword)
+    {
+        keyword = Normalize(keyword);
+        Validate(keyword, allowSpaces: false);
+
+        if (keyword.Length < 7)
         {
-            throw new ArgumentException($"Key must be between 1 and {alphabet.Length - 1}.");
+            throw new ArgumentException("Keyword must contain at least 7 letters.");
+        }
+
+        return keyword;
+    }
+
+    public static void ValidateKey(int key)
+    {
+        if (key < 1 || key > 30)
+        {
+            throw new ArgumentException("Numeric key must be an integer between 1 and 30.");
         }
     }
 
-    private int[] ConvertToNumbers(string message)
+    public static int[] ToNumbers(string text, string alphabet)
     {
-        int[] numbers = new int[message.Length];
+        int[] numbers = new int[text.Length];
 
-        for (int i = 0; i < message.Length; i++)
+        for (int i = 0; i < text.Length; i++)
         {
-            numbers[i] = alphabet.IndexOf(message[i]);
+            int index = alphabet.IndexOf(text[i]);
+
+            if (index < 0)
+            {
+                throw new ArgumentException($"Character '{text[i]}' is not in the alphabet.");
+            }
+
+            numbers[i] = index;
         }
 
         return numbers;
     }
 
-    private int[] ShiftNumbers(int[] numbers, int key)
-    {
-        int[] shifted = new int[numbers.Length];
-
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            shifted[i] = ((numbers[i] + key) % alphabet.Length + alphabet.Length) % alphabet.Length;
-        }
-
-        return shifted;
-    }
-
-    private string ConvertToString(int[] numbers)
+    public static string ToText(int[] numbers, string alphabet)
     {
         char[] result = new char[numbers.Length];
 
@@ -94,69 +99,307 @@ class CaesarCipher
         return new string(result);
     }
 
-    public void PrintEncryptionTable(int key)
+    public static int[] ShiftNumbers(int[] numbers, int key)
     {
-        ValidateKey(key);
+        int[] shifted = new int[numbers.Length];
 
-        int length = alphabet.Length;
-
-        int[] originalNumbers = new int[length];
-
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < numbers.Length; i++)
         {
-            originalNumbers[i] = i;
+            shifted[i] = (numbers[i] + key + Size) % Size;
         }
 
-        int[] shiftedNumbers = ShiftNumbers(originalNumbers, key);
+        return shifted;
+    }
+}
 
-        Console.WriteLine($"\nCaesar Cipher Table (key = {key})\n");
+// ============================================================
+// Task 1.1 - Standard Caesar Cipher
+// ============================================================
 
-        // Row 1: Original numeric values
-        Console.Write("x   |");
-        foreach (int number in originalNumbers)
-            Console.Write($"{number, 3}|");
+class CaesarCipher
+{
+    public string Encrypt(string message, int key)
+    {
+        RomanianAlphabet.ValidateKey(key);
+        message = RomanianAlphabet.Prepare(message);
+
+        int[] numbers = RomanianAlphabet.ToNumbers(message, RomanianAlphabet.Letters);
+
+        int[] encrypted = RomanianAlphabet.ShiftNumbers(numbers, key);
+
+        return RomanianAlphabet.ToText(encrypted, RomanianAlphabet.Letters);
+    }
+
+    public string Decrypt(string message, int key)
+    {
+        RomanianAlphabet.ValidateKey(key);
+        message = RomanianAlphabet.Prepare(message);
+
+        int[] numbers = RomanianAlphabet.ToNumbers(message, RomanianAlphabet.Letters);
+
+        int[] decrypted = RomanianAlphabet.ShiftNumbers(numbers, -key);
+
+        return RomanianAlphabet.ToText(decrypted, RomanianAlphabet.Letters);
+    }
+
+    public void PrintEncryptionTable(int key)
+    {
+        RomanianAlphabet.ValidateKey(key);
+
+        CipherTablePrinter.Print(RomanianAlphabet.Letters, key);
+    }
+}
+
+// ============================================================
+// Task 1.2 - Caesar Cipher with Two Keys
+// ============================================================
+
+class TwoKeyCaesarCipher
+{
+    public string Encrypt(string message, int key, string keyword)
+    {
+        RomanianAlphabet.ValidateKey(key);
+        message = RomanianAlphabet.Prepare(message);
+
+        string alphabet = BuildPermutedAlphabet(keyword);
+
+        int[] numbers = RomanianAlphabet.ToNumbers(message, alphabet);
+        int[] encrypted = RomanianAlphabet.ShiftNumbers(numbers, key);
+
+        return RomanianAlphabet.ToText(encrypted, alphabet);
+    }
+
+    public string Decrypt(string message, int key, string keyword)
+    {
+        RomanianAlphabet.ValidateKey(key);
+        message = RomanianAlphabet.Prepare(message);
+
+        string alphabet = BuildPermutedAlphabet(keyword);
+
+        int[] numbers = RomanianAlphabet.ToNumbers(message, alphabet);
+        int[] decrypted = RomanianAlphabet.ShiftNumbers(numbers, -key);
+
+        return RomanianAlphabet.ToText(decrypted, alphabet);
+    }
+
+    public string BuildPermutedAlphabet(string keyword)
+    {
+        keyword = RomanianAlphabet.PrepareKeyword(keyword);
+
+        string result = "";
+
+        // Add unique letters from the keyword
+        foreach (char letter in keyword)
+        {
+            if (!result.Contains(letter))
+            {
+                result += letter;
+            }
+        }
+
+        // Append remaining Romanian alphabet letters
+        foreach (char letter in RomanianAlphabet.Letters)
+        {
+            if (!result.Contains(letter))
+            {
+                result += letter;
+            }
+        }
+
+        return result;
+    }
+
+    public void PrintEncryptionTable(int key, string keyword)
+    {
+        RomanianAlphabet.ValidateKey(key);
+
+        string alphabet = BuildPermutedAlphabet(keyword);
+
+        Console.WriteLine($"\nKeyword: {RomanianAlphabet.Normalize(keyword)}");
+        Console.WriteLine($"Original alphabet: {RomanianAlphabet.Letters}");
+        Console.WriteLine($"Permuted alphabet: {alphabet}");
+
+        CipherTablePrinter.Print(alphabet, key);
+    }
+}
+
+// ============================================================
+// Cipher Table Printer
+// Displays numeric and letter mappings for manual verification
+// ============================================================
+
+static class CipherTablePrinter
+{
+    public static void Print(string alphabet, int key)
+    {
+        int[] original = new int[alphabet.Length];
+
+        for (int i = 0; i < original.Length; i++)
+        {
+            original[i] = i;
+        }
+
+        int[] shifted = RomanianAlphabet.ShiftNumbers(original, key);
+
+        Console.WriteLine($"\nEncryption Table (key = {key})\n");
+
+        PrintRow("x", original);
+        PrintRow("m", original, alphabet);
+        PrintRow("x+k", shifted);
+        PrintRow("c", shifted, alphabet);
 
         Console.WriteLine();
+    }
 
-        // Row 2: Original letters
-        Console.Write("m   |");
-        foreach (int number in originalNumbers)
-            Console.Write($"  {alphabet[number]}|");
+    private static void PrintRow(string label, int[] numbers, string? alphabet = null)
+    {
+        Console.Write($"{label, -4}|");
 
-        Console.WriteLine();
+        foreach (int number in numbers)
+        {
+            string value = alphabet == null ? number.ToString() : alphabet[number].ToString();
 
-        // Row 3: Shifted numeric values
-        Console.Write("x+k |");
-        foreach (int number in shiftedNumbers)
-            Console.Write($"{number, 3}|");
-
-        Console.WriteLine();
-
-        // Row 4: Encrypted letters
-        Console.Write("c   |");
-        foreach (int number in shiftedNumbers)
-            Console.Write($"  {alphabet[number]}|");
+            Console.Write($"{value, 3}|");
+        }
 
         Console.WriteLine();
     }
 }
+
+// ============================================================
+// Program - Console Interface
+// ============================================================
 
 class Program
 {
     static void Main()
     {
-        var cipher = new CaesarCipher();
+        var caesar = new CaesarCipher();
+        var twoKeyCaesar = new TwoKeyCaesarCipher();
 
-        string original = "hello";
-        int key = 3;
+        while (true)
+        {
+            Console.WriteLine("\n=== Romanian Caesar Cipher ===");
+            Console.WriteLine("1. Standard Caesar Cipher");
+            Console.WriteLine("2. Two-Key Caesar Cipher");
+            Console.WriteLine("0. Exit");
 
-        cipher.PrintEncryptionTable(key);
+            int cipherType = ReadChoice("Choose cipher: ", 0, 2);
 
-        string encrypted = cipher.Encrypt(original, key);
-        string decrypted = cipher.Decrypt(encrypted, key);
+            if (cipherType == 0)
+                break;
 
-        Console.WriteLine($"Original:  {original}");
-        Console.WriteLine($"Encrypted: {encrypted}");
-        Console.WriteLine($"Decrypted: {decrypted}");
+            Console.WriteLine("\n1. Encrypt");
+            Console.WriteLine("2. Decrypt");
+
+            int operation = ReadChoice("Choose operation: ", 1, 2);
+
+            int key = ReadNumericKey();
+
+            string keyword = "";
+
+            if (cipherType == 2)
+            {
+                keyword = ReadKeyword();
+            }
+
+            string message = ReadMessage();
+            string result;
+
+            if (cipherType == 1)
+            {
+                caesar.PrintEncryptionTable(key);
+
+                result =
+                    operation == 1 ? caesar.Encrypt(message, key) : caesar.Decrypt(message, key);
+            }
+            else
+            {
+                twoKeyCaesar.PrintEncryptionTable(key, keyword);
+
+                result =
+                    operation == 1
+                        ? twoKeyCaesar.Encrypt(message, key, keyword)
+                        : twoKeyCaesar.Decrypt(message, key, keyword);
+            }
+
+            Console.WriteLine($"Input:  {message}");
+            Console.WriteLine($"Result: {result}");
+        }
+    }
+
+    private static int ReadChoice(string prompt, int min, int max)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+
+            string? input = Console.ReadLine();
+
+            if (int.TryParse(input, out int choice) && choice >= min && choice <= max)
+            {
+                return choice;
+            }
+
+            Console.WriteLine($"Invalid choice. Enter a number from {min} to {max}.");
+        }
+    }
+
+    private static int ReadNumericKey()
+    {
+        while (true)
+        {
+            Console.Write("Enter numeric key (1-30): ");
+
+            string? input = Console.ReadLine();
+
+            if (int.TryParse(input, out int key) && key >= 1 && key <= 30)
+            {
+                return key;
+            }
+
+            Console.WriteLine("Invalid key. Enter an integer between 1 and 30.");
+        }
+    }
+
+    private static string ReadKeyword()
+    {
+        while (true)
+        {
+            Console.Write("Enter keyword (at least 7 letters): ");
+
+            string keyword = Console.ReadLine() ?? "";
+
+            try
+            {
+                return RomanianAlphabet.PrepareKeyword(keyword);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Invalid keyword: {ex.Message}");
+            }
+        }
+    }
+
+    private static string ReadMessage()
+    {
+        while (true)
+        {
+            Console.Write("Enter message: ");
+
+            string message = Console.ReadLine() ?? "";
+
+            try
+            {
+                return RomanianAlphabet.Prepare(message);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Invalid message: {ex.Message}");
+            }
+        }
     }
 }
+
+
+

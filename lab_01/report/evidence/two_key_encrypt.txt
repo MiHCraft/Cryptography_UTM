@@ -1,0 +1,33 @@
+
+=== Romanian Caesar Cipher ===
+1. Standard Caesar Cipher
+2. Two-Key Caesar Cipher
+0. Exit
+Choose cipher: 2
+
+1. Encrypt
+2. Decrypt
+Choose operation: 1
+Enter numeric key (1-30): 3
+Enter keyword (at least 7 letters): criptografie
+Enter message: cifrul cezar
+
+Keyword: CRIPTOGRAFIE
+Original alphabet: AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ
+Permuted alphabet: CRIPTOGAFEĂÂBDHÎJKLMNQSȘȚUVWXYZ
+
+Encryption Table (key = 3)
+
+x   |  0|  1|  2|  3|  4|  5|  6|  7|  8|  9| 10| 11| 12| 13| 14| 15| 16| 17| 18| 19| 20| 21| 22| 23| 24| 25| 26| 27| 28| 29| 30|
+m   |  C|  R|  I|  P|  T|  O|  G|  A|  F|  E|  Ă|  Â|  B|  D|  H|  Î|  J|  K|  L|  M|  N|  Q|  S|  Ș|  Ț|  U|  V|  W|  X|  Y|  Z|
+x+k |  3|  4|  5|  6|  7|  8|  9| 10| 11| 12| 13| 14| 15| 16| 17| 18| 19| 20| 21| 22| 23| 24| 25| 26| 27| 28| 29| 30|  0|  1|  2|
+c   |  P|  T|  O|  G|  A|  F|  E|  Ă|  Â|  B|  D|  H|  Î|  J|  K|  L|  M|  N|  Q|  S|  Ș|  Ț|  U|  V|  W|  X|  Y|  Z|  C|  R|  I|
+
+Input:  CIFRULCEZAR
+Result: POÂTXQPBIĂT
+
+=== Romanian Caesar Cipher ===
+1. Standard Caesar Cipher
+2. Two-Key Caesar Cipher
+0. Exit
+Choose cipher: 

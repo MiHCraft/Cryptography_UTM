@@ -1,0 +1,3 @@
+from these tRo fundamental UrinHiUles for seleHtinJ usable fieldHiUhers, kerHkhoffs deduHed 
+siY sUeHifiH reBuirements: (1) the systemshould be, if not theoretiHally unbreakable, 
+unbreakable in UraHtiHe; (2)HomUromise of the system should not inHonKenienHe the 

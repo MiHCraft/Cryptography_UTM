@@ -1,91 +1,354 @@
 \documentclass{tum_report}
-% -----------------------------------------------------------------------
-%  Extra packages that may not be in the template already
-% -----------------------------------------------------------------------
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{enumitem}
-\usepackage{verbatim}
+\usepackage[T1]{fontenc}
+\usepackage{combelow}
 \usepackage{booktabs}
-\usepackage{array}
-\usepackage{xcolor}
-\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{microtype}
+
+\hypersetup{pdftitle={Laboratory Work No. 1: Caesar Cipher},
+    pdfauthor={Mihail Pancenco}, pdfsubject={Cryptography, Romanian alphabet}}
+\lstdefinestyle{cryptocode}{
+    language=[Sharp]C, basicstyle=\ttfamily\fontsize{9}{11}\selectfont,
+    keywordstyle=\bfseries\color{blue!45!black},
+    commentstyle=\itshape\color{black!55}, stringstyle=\color{green!35!black},
+    numbers=left, numberstyle=\tiny\color{black!55}, numbersep=7pt,
+    frame=single, rulecolor=\color{black!25}, backgroundcolor=\color{black!2},
+    breaklines=true, breakatwhitespace=false, columns=fullflexible,
+    keepspaces=true, showstringspaces=false, tabsize=4, emptylines=0,
+    aboveskip=6pt, belowskip=6pt, xleftmargin=12pt, xrightmargin=0pt,
+    literate={Ă}{{\u{A}}}1 {ă}{{\u{a}}}1 {Â}{{\^{A}}}1 {â}{{\^{a}}}1
+      {Î}{{\^{I}}}1 {î}{{\^{i}}}1 {Ș}{{\cb{S}}}1 {ș}{{\cb{s}}}1
+      {Ț}{{\cb{T}}}1 {ț}{{\cb{t}}}1 {Ş}{{\c{S}}}1 {ş}{{\c{s}}}1
+      {Ţ}{{\c{T}}}1 {ţ}{{\c{t}}}1
+}
+\newcommand{\codepart}[3]{{\setstretch{1}\lstinputlisting[style=cryptocode,
+    firstline=#1,lastline=#2,gobble=#3]{../code/Program.cs}}}
+\newcommand{\screenshot}[3]{%
+    \begin{figure}[H]\centering
+    \includegraphics[width=#3\textwidth]{img/#1.png}
+    \caption{#2}\label{fig:#1}\end{figure}}
 
 \begin{document}
+\input{title_page.tex}
+\clearpage
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\pagestyle{fancy}
 
-    \input{title_page.tex}
-    \clearpage
+\chapter{Short theory}
+\section{Objectives and the Romanian alphabet}
+The aim of Laboratory Work No. 1 is to implement the standard Caesar cipher
+and a Caesar cipher with a keyword-based alphabet permutation, to understand
+modular encryption and decryption, and to compare their security. Both tasks
+use the 31-letter Romanian alphabet and the encoding specified in the
+laboratory assignment~\cite{ref:assignment}.
 
-    \addtocontents{toc}{\protect \thispagestyle{empty}}
-    \tableofcontents
-    \thispagestyle{empty}
-    \clearpage
+Each letter is represented by its position, starting at zero. Table~\ref{tab:alphabet}
+shows the complete encoding. Character codes such as ASCII or Unicode values
+are not used to calculate the shift.
+\begin{table}[H]
+\caption{Romanian alphabet and the required numeric encoding}
+\label{tab:alphabet}
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{l*{16}{c}}\toprule
+Letter & A & Ă & Â & B & C & D & E & F & G & H & I & Î & J & K & L & M\\
+Code & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\\midrule
+Letter & N & O & P & Q & R & S & Ș & T & Ț & U & V & W & X & Y & Z & \\
+Code & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30 & \\\bottomrule
+\end{tabular}
+\end{table}
 
+\section{Task 1.1: the standard Caesar cipher}
+A Caesar cipher replaces every plaintext letter with the letter located a
+fixed number of positions further along the alphabet. The secret key is an
+integer $k\in\{1,2,\ldots,30\}$. For a plaintext index $x$ and a ciphertext
+index $y$, encryption and decryption are
+\begin{align}
+ y &= E_k(x)=(x+k)\bmod 31,\\
+ x &= D_k(y)=(y-k+31)\bmod 31.
+\end{align}
+Adding 31 during decryption prevents a negative remainder. This is sufficient
+because the accepted key is at most 30. For example, with $k=3$, the letter
+C has index 4 and becomes F, at index 7; Z has index 30 and becomes Â,
+at index 2. Decrypting Â gives $(2-3+31)\bmod31=30$, which is Z.
 
-
-% =======================================================================
-\chapter{Introduction}
-% =======================================================================
-
-The goal is to understand how the Caesar cipher works, to see why its smal
-key space makes it insecure, to strengthen it with a keyword-based permutation
-of the alphabet, and to implement both versions for the Romanian alphabet.
+The standard cipher has exactly 30 permitted keys; $k=0$ is excluded because
+it would leave the text unchanged. An attacker can decrypt the ciphertext
+with each of the 30 keys and inspect the candidates. This small key space
+makes exhaustive search practical.
 
 \clearpage
+\section{Task 1.2: Caesar cipher with two keys}
+The second version uses a numeric key $k_1\in\{1,\ldots,30\}$ and a keyword
+$k_2$ containing at least seven Romanian letters. The keyword is converted
+to uppercase. Its letters are placed first, retaining only the first
+occurrence of each letter, and the unused letters of the Romanian alphabet
+are appended in their original order. The resulting alphabet $P$ contains
+all 31 letters exactly once.
 
-% =======================================================================
-\chapter{Theory}
+If $\operatorname{pos}_P(a)$ denotes the position of letter $a$ in $P$, the
+letter-level formulas are
+\begin{align}
+ E_{k_1,P}(a)&=P[(\operatorname{pos}_P(a)+k_1)\bmod31],\\
+ D_{k_1,P}(b)&=P[(\operatorname{pos}_P(b)-k_1+31)\bmod31].
+\end{align}
+Both the lookup of the input letter and the lookup of the output letter use
+the same permuted alphabet. The keyword changes the alphabet order, while
+the numeric key determines the cyclic shift.
 
+For $k_2=\texttt{CRIPTOGRAFIE}$, the distinct keyword letters are
+\texttt{CRIPTOGAFE}. Appending the remaining letters gives
+\begin{center}\small\ttfamily
+CRIPTOGAFEĂÂBDHÎJKLMNQSȘȚUVWXYZ
+\end{center}
+With $k_1=3$, C at position 0 becomes P at position 3, while I at position 2
+becomes O at position 5.
 
+Considering every possible alphabet permutation gives the theoretical
+number of parameter pairs
+\[
+ |K_{\mathrm{pairs}}|=30\cdot31!\approx2.47\times10^{35}.
+\]
+This counts pairs of a shift and an alphabet ordering, rather than keyword
+strings: repeated letters can make different keywords produce the same
+ordering. Different parameter pairs can also produce the same substitution,
+so the number of distinct encryptions is at most $31!$. Restricting keywords
+to ordinary words reduces the practical search space further.
 
-% =======================================================================
-\chapter{Building the OS}
-\section{Build it and boot it}
-
-The xv6 kernel and user programs were built from source using the RISC-V
-toolchain. Make compiled and linked the required components, created the
-filesystem image, and launched the resulting system in QEMU.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.82\textwidth]{./img/img_06.png}
-    \caption{Booting xv6 in the QEMU RISC-V emulator}
-    \label{fig:xv6_boot}
-\end{figure}
-
-The boot completed successfully. After initializing the system, xv6 started
-its shell and presented the command prompt.
-
-
-
-\section{Use xv6 as the Unix it is}
-\section{Read the source}
-\section{Write first xv6 program}
-
-
-
-
-
-\clearpage
-
-% =======================================================================
-\chapter{CONCLUSIONS}
-% =======================================================================
-
-
-% =======================================================================
-% =======================================================================
-
+Despite this larger theoretical key space, the cipher remains
+monoalphabetic: a given plaintext letter always maps to the same ciphertext
+letter. Letter counts and repeated-letter patterns are preserved under
+renaming, so frequency analysis can still be used. Neither version provides
+security suitable for protecting modern confidential information.
 
 \clearpage
+\chapter{Implementation}
+\section{Program structure and letter encoding}
+The implementation is a C\# console program in \texttt{lab\_01/code/Program.cs}.
+\texttt{RomanianAlphabet} provides shared normalization, validation, letter
+conversion and modular shifting. \texttt{CaesarCipher} implements Task 1.1,
+\texttt{TwoKeyCaesarCipher} implements Task 1.2, and
+\texttt{CipherTablePrinter} displays the numeric and letter mappings.
+\texttt{Program} manages the menu and input retry loops. The following
+excerpts are read directly from the existing source file; empty lines are
+compressed for readability.
 
-% =======================================================================
-% Bibliography
-% =======================================================================
+\codepart{10}{11}{4}
+\noindent\textit{Comment.} The alphabet string exactly matches Table~\ref{tab:alphabet},
+and its size is explicitly set to 31.
 
-%\input{bibliography.tex}
+\codepart{75}{85}{8}
+\noindent\textit{Comment.} \texttt{IndexOf} converts each letter to its position
+in the supplied alphabet. For Task 1.1 this is the original alphabet; for
+Task 1.2 it is the permuted alphabet. A missing letter causes an exception,
+rather than an invalid numeric index.
+
+\codepart{90}{112}{4}
+\noindent\textit{Comment.} \texttt{ToText} maps the shifted indices back to
+letters. \texttt{ShiftNumbers} implements modular arithmetic. Encryption
+passes a positive key; decryption passes its negative. Adding \texttt{Size}
+keeps the remainder nonnegative for the validated key range.
 
 \clearpage
+\section{Normalization and message validation}
+\codepart{13}{22}{4}
+\noindent\textit{Comment.} Normalization replaces the cedilla variants
+\texttt{ş/Ş} and \texttt{ţ/Ţ} with the Romanian comma-below letters
+\texttt{ș/Ș} and \texttt{ț/Ț}, then converts the string to uppercase.
+This supports both uppercase and lowercase input from different keyboards.
+
+\codepart{24}{40}{4}
+\noindent\textit{Comment.} Validation accepts only letters from the explicit
+alphabet. Ordinary spaces are allowed in messages. An error identifies the
+rejected character and lists the allowed letters. Digits, punctuation,
+tabs and other characters are rejected.
+
+\noindent The helper \texttt{Prepare} normalizes and validates the input
+before removing all ordinary spaces. Both encryption and decryption use
+this preparation. Consequently, decryption recovers uppercase text without
+spaces; the original capitalization and word spacing cannot be reconstructed.
+
+\codepart{50}{61}{4}
+\noindent\textit{Comment.} Keywords are normalized in the same way as messages,
+but spaces are forbidden and the normalized keyword must contain at least
+seven letters. This length check occurs before duplicate removal, so the
+keyword does not need seven \emph{distinct} letters.
+
+\clearpage
+\section{Building and displaying the permuted alphabet}
+\codepart{185}{210}{4}
+\noindent\textit{Comment.} The first loop keeps the first occurrence of each
+keyword letter. The second loop appends every unused Romanian letter in
+the prescribed order. As a result, the alphabet remains a permutation of
+all 31 letters even when the keyword contains duplicates or diacritics.
+
+\codepart{212}{223}{4}
+\noindent\textit{Comment.} Task 1.2 displays the normalized keyword, the original
+alphabet and the permuted alphabet, making the ordering available for manual
+verification. Both cipher classes also print an encryption table with four
+rows: \texttt{x}, \texttt{m}, \texttt{x+k} and \texttt{c}. The table always
+shows the forward mapping, including when the selected operation is decryption;
+the inverse operation itself uses the negative shift.
+
+\clearpage
+\section{Encryption and decryption}
+\codepart{121}{143}{4}
+\noindent\textit{Comment.} The standard cipher first validates the numeric key
+and prepares the message. It then converts letters to positions in the
+original alphabet, applies $+k$ for encryption or $-k$ for decryption, and
+converts the resulting positions back to letters.
+
+\codepart{159}{183}{4}
+\noindent\textit{Comment.} The two-key cipher follows the same steps, but builds
+the keyword alphabet first. Both \texttt{ToNumbers} and \texttt{ToText}
+receive that alphabet. Decryption must use the same numeric key and the same
+keyword-derived ordering as encryption.
+
+\clearpage
+\section{Numeric keys, retry loops and the console menu}
+\codepart{63}{69}{4}
+\noindent\textit{Comment.} The cipher methods independently enforce the
+numeric key interval $1\leq k\leq30$, so invalid keys are rejected even if
+a method is called outside the console menu.
+
+\codepart{348}{363}{4}
+\noindent\textit{Comment.} The console accepts a key only if
+\texttt{int.TryParse} succeeds and the value lies between 1 and 30.
+Otherwise it displays the permitted range and asks for the key again.
+
+\codepart{365}{382}{4}
+\noindent\textit{Comment.} The keyword reader catches validation exceptions,
+displays the reason and repeats the prompt. \texttt{ReadMessage} uses the
+same pattern with \texttt{Prepare}, so invalid message characters also cause
+a retry. \texttt{ReadChoice} validates the available menu options.
+
+The menu selects a cipher, then encryption or decryption. The user enters
+the numeric key, the keyword when required, and the message. The program
+prints the mapping table, prepared input and result, then returns to the
+menu; option 0 exits. The substitution uses explicit alphabet indices.
+
+\clearpage
+\chapter{Results}
+\section{Task 1.1: encryption and decryption}
+The unchanged program was compiled with the .NET 10 SDK. The screenshots
+show a live local console viewer connected to the program's standard input
+and output. The viewer only displays the console session; all cipher logic
+and validation come from \texttt{Program.cs}.
+
+For the input \texttt{cifrul cezar} and $k=3$, the prepared plaintext is
+\texttt{CIFRULCEZAR}. Encryption produces \texttt{FKITXOFHÂBT}; decrypting
+this ciphertext with the same key returns \texttt{CIFRULCEZAR}. These
+outputs use the Romanian alphabet, so they differ from the English-alphabet
+example in the assignment.
+\screenshot{standard_encrypt}{Task 1.1: encryption with the numeric key 3}{1.0}
+\noindent\textit{Manual check.} The first three letters of \texttt{CIFRULCEZAR}
+are C, I and F, with positions 4, 10 and 7. Adding 3 gives positions 7, 13
+and 10, or F, K and I. The Z at position 30 becomes Â at position 2.
+
+\clearpage
+\subsection{Recovering the standard-cipher plaintext}
+The user selects the standard cipher and operation 2, then supplies key 3
+and ciphertext \texttt{FKITXOFHÂBT}. The result in
+Figure~\ref{fig:standard_decrypt} is \texttt{CIFRULCEZAR}, matching the
+prepared input from the encryption run.
+\screenshot{standard_decrypt}{Task 1.1: decryption with the numeric key 3}{1.0}
+\noindent\textit{Manual check.} F at position 7 becomes C at position
+$(7-3+31)\bmod31=4$. K at position 13 becomes I at position 10.
+Â at position 2 becomes Z at position $(2-3+31)\bmod31=30$.
+Spaces and lowercase letters are absent because preparation removes them.
+
+\clearpage
+\section{Task 1.2: encryption and decryption}
+For $k_1=3$ and the lowercase keyword \texttt{criptografie}, the program
+displays \texttt{CRIPTOGRAFIE} and the alphabet
+\texttt{CRIPTOGAFEĂÂBDHÎJKLMNQSȘȚUVWXYZ}. Encrypting
+\texttt{cifrul cezar} produces \texttt{POÂTXQPBIĂT}. Decryption with the
+same two keys restores \texttt{CIFRULCEZAR}.
+
+The printed table also permits manual checking: C maps to P, I to O,
+F to Â, and Z wraps from position 30 to position 2, which contains I.
+\screenshot{two_key_encrypt}{Task 1.2: encryption and the displayed permuted alphabet}{1.0}
+\noindent\textit{Comparison.} With the same numeric key and prepared input,
+the standard version gives \texttt{FKITXOFHÂBT}, while the permuted version
+gives \texttt{POÂTXQPBIĂT}. The difference comes entirely from the
+keyword-derived alphabet order.
+
+\clearpage
+\subsection{Recovering the two-key plaintext}
+To decrypt, the user selects mode 2 and operation 2. The numeric key is 3
+and the keyword is \texttt{criptografie}. The ciphertext is
+\texttt{POÂTXQPBIĂT}. The program rebuilds the same displayed permutation
+and returns \texttt{CIFRULCEZAR}.
+\screenshot{two_key_decrypt}{Task 1.2: decryption using the same numeric key and keyword}{1.0}
+\noindent\textit{Manual check.} In the permuted alphabet, P has position 3
+and decrypts to position 0, containing C. O has position 5 and decrypts to
+position 2, containing I. I in the ciphertext has position 2 and decrypts
+to position 30, containing Z. These checks confirm that decryption also
+uses positions in the permuted alphabet.
+
+\clearpage
+\section{Invalid numeric keys and message characters}
+Figure~\ref{fig:invalid_input} shows three rejected numeric keys:
+\texttt{0}, \texttt{31} and \texttt{abc}. Each attempt produces
+\texttt{Invalid key. Enter an integer between 1 and 30.}, followed by a
+new key prompt. Once the valid key \texttt{3} is supplied, the program
+continues to the message.
+
+The messages \texttt{salut!} and \texttt{salut2} are rejected. Each error
+names the offending character, displays the accepted alphabet and states
+that spaces are allowed. The message prompt is repeated after each error.
+A subsequent valid input \texttt{Salut} was accepted and encrypted to
+\texttt{ȚBOXV}, confirming that the program recovers from invalid input.
+\screenshot{invalid_input}{Rejected keys and message characters, followed by repeated prompts}{1.0}
+
+\clearpage
+\section{Invalid keywords}
+Figure~\ref{fig:invalid_keyword} shows that the two-key mode also rejects the
+numeric key \texttt{-1}. The key \texttt{30} is accepted. The six-letter
+keyword \texttt{secret} produces the minimum-length error;
+\texttt{cripto1} is rejected because it contains a digit, and
+\texttt{cripto grafie} is rejected because keywords cannot contain spaces.
+Each error is followed by a new keyword prompt.
+\screenshot{invalid_keyword}{Two-key validation: wrong shift, short keyword, digit and space}{1.0}
+
+\clearpage
+\section{Romanian letters and boundary checks}
+With the standard cipher, $k=1$ and input \texttt{aăâîşţz}, normalization
+produces \texttt{AĂÂÎȘȚZ}; encryption produces \texttt{ĂÂBJTUA}.
+Figure~\ref{fig:romanian_letters} demonstrates lowercase conversion,
+cedilla compatibility, Romanian diacritics and the wraparound $Z\to A$.
+\screenshot{romanian_letters}{Romanian letters, cedilla normalization and wraparound at key 1}{0.95}
+
+The two-key mode was also checked with $k_1=30$, the seven-letter keyword
+\texttt{ştiinţă} and the same input. The normalized keyword
+\texttt{ȘTIINȚĂ} yields \texttt{ȘTINȚĂAÂBCDEFGHÎJKLMOPQRSUVWXYZ};
+the result is \texttt{ĂȚAHZNY}. This checks the upper key boundary and
+shows that a valid seven-letter keyword can include a repeated letter.
+
+Additional checks exercised every numeric key from 1 to 30 over all 31
+letters: once for the standard cipher and once for each of the keywords
+\texttt{criptografie} and \texttt{ştiinţă}. All 90 encryption/decryption
+round trips passed. Each encryption was also compared with an independently
+calculated modular mapping. In total, these checks executed the unchanged
+program 180 times. Console transcripts and the verification summary are
+saved in the report's \texttt{evidence} folder.
+
+\clearpage
+\input{conclusion.tex}
+\section{Source code}
+The full source code is available in the GitHub repository~\cite{ref:source}:
+\begin{center}
+\url{https://github.com/MiHCraft/Cryptography_UTM}
+\end{center}
+The implementation for this laboratory work is
+\texttt{lab\_01/code/Program.cs}. The report describes and quotes this file;
+no changes were made to the implementation while preparing the report.
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\input{bibliography.tex}
 \end{document}

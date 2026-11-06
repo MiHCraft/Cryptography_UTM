@@ -1,0 +1,5 @@
+The most common digraphs in the english language are:
+TH,HE,AN,IN,ER,ON,RE,ED,ND,HA,AT,EN
+
+The most common digraphs in the message are:
+WQ,QV,VI,XG,IV,PW,NG,SV,XW,TG,QT,VP,VG

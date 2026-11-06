@@ -1,0 +1,22 @@
+
+=== Romanian Caesar Cipher ===
+1. Standard Caesar Cipher
+2. Two-Key Caesar Cipher
+0. Exit
+Choose cipher: 1
+
+1. Encrypt
+2. Decrypt
+Choose operation: 1
+Enter numeric key (1-30): 0
+Invalid key. Enter an integer between 1 and 30.
+Enter numeric key (1-30): 31
+Invalid key. Enter an integer between 1 and 30.
+Enter numeric key (1-30): abc
+Invalid key. Enter an integer between 1 and 30.
+Enter numeric key (1-30): 3
+Enter message: salut!
+Invalid message: Character '!' is not allowed. Allowed letters: AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ and spaces.
+Enter message: salut2
+Invalid message: Character '2' is not allowed. Allowed letters: AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ and spaces.
+Enter message: 

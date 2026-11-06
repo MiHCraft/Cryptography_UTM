@@ -1,0 +1,294 @@
+\documentclass{tum_report}
+\usepackage[T1]{fontenc}
+\usepackage{combelow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{microtype}
+\counterwithout{table}{section}
+\counterwithin{table}{chapter}
+\hypersetup{pdftitle={Laboratory Work No. 3: Romanian Playfair Cipher},
+    pdfauthor={Mihail Pancenco},pdfsubject={Cryptography, Task 3.1, variant 19}}
+\lstdefinestyle{reportcode}{
+    language=[Sharp]C,basicstyle=\ttfamily\fontsize{9}{11}\selectfont,
+    keywordstyle=\bfseries\color{blue!45!black},
+    commentstyle=\itshape\color{black!55},stringstyle=\color{green!35!black},
+    columns=fullflexible,keepspaces=true,showstringspaces=false,
+    breaklines=true,breakatwhitespace=false,emptylines=0,numbers=none,
+    frame=single,rulecolor=\color{black!25},backgroundcolor=\color{black!2},
+    aboveskip=6pt,belowskip=6pt,
+    literate={Ă}{{\u{A}}}1 {ă}{{\u{a}}}1 {Â}{{\^{A}}}1 {â}{{\^{a}}}1
+      {Î}{{\^{I}}}1 {î}{{\^{i}}}1 {Ș}{{\cb{S}}}1 {ș}{{\cb{s}}}1
+      {Ț}{{\cb{T}}}1 {ț}{{\cb{t}}}1 {Ş}{{\c{S}}}1 {ş}{{\c{s}}}1
+      {Ţ}{{\c{T}}}1 {ţ}{{\c{t}}}1
+}
+\lstdefinestyle{console}{style=reportcode,language={},emptylines=1,
+    basicstyle=\ttfamily\fontsize{9}{11}\selectfont,breakatwhitespace=true}
+\newcommand{\codepart}[2]{{\setstretch{1}\lstinputlisting[
+    style=reportcode,firstline=#1,lastline=#2,gobble=4]{../code/playfair/PlayfairCipher.cs}}}
+\newcommand{\consolepart}[1]{{\setstretch{1}\lstinputlisting[
+    style=console]{evidence/#1.txt}}}
+\clubpenalty=10000
+\widowpenalty=10000
+
+\begin{document}
+\input{title_page.tex}
+\clearpage
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\pagestyle{fancy}
+
+\chapter{Task and short theory}
+\section{Task 3.1 and the Romanian alphabet}
+The objective of Laboratory Work No. 3 is to study classical ciphers that
+use more than a fixed substitution of individual letters. My number in the
+group list is 19. Since it is odd, the selected task is 3.1: implement the
+Playfair cipher for Romanian messages, as specified in the assignment~\cite{ref:assignment}.
+The program must accept encryption and decryption, require a key of at
+least seven letters, reject invalid input clearly, and leave the final
+restoration of word spaces to the user.
+
+Playfair encrypts pairs of letters using a matrix built from a keyword.
+The Romanian alphabet has 31 letters. In this implementation, J is treated
+as I, so the matrix has 30 cells arranged in \textbf{six rows and five columns}.
+The letter Î remains distinct from I. Uppercase and lowercase Romanian
+letters are accepted; the cedilla variants of Ș and Ț are normalized.
+
+The keyword's first occurrences are written into the matrix first. All
+unused letters are then appended in Romanian alphabetical order. Messages
+are converted to uppercase, ordinary spaces are removed, and J is replaced
+by I. Identical letters within a pair are separated with X; Q is used
+when the repeated letter is X. An unmatched final letter receives the
+same choice of filler. Decryption keeps these fillers for manual interpretation.
+
+\section{Encryption and decryption rules}
+Let $A[r,c]$ be the matrix, using zero-based coordinates
+$r\in\{0,\ldots,5\}$ and $c\in\{0,\ldots,4\}$. Let $d=1$ for encryption
+and $d=-1$ for decryption. For a pair at positions $(r_1,c_1)$ and $(r_2,c_2)$:
+\begin{itemize}
+\item \textbf{Same row:} keep each row and replace each column by
+      $(c+d+5)\bmod5$.
+\item \textbf{Same column:} keep each column and replace each row by
+      $(r+d+6)\bmod6$.
+\item \textbf{Rectangle:} use the opposite corners $(r_1,c_2)$ and $(r_2,c_1)$.
+      This rule is identical for encryption and decryption.
+\end{itemize}
+Thus encryption moves right or down, while decryption moves left or up.
+The modulo operations implement wraparound. Adding the relevant dimension
+keeps the remainder nonnegative during decryption.
+
+Playfair substitutes letter pairs, which obscures simple single-letter
+frequency relationships. It is nevertheless a classical educational cipher,
+not a suitable method for protecting modern confidential communication.
+
+\clearpage
+\chapter{Implementation}
+\section{Program structure, normalization and validation}
+The C\# implementation contains two classes. \texttt{Program} manages the
+menu, reads input, catches validation errors and repeats the corresponding
+prompt. \texttt{PlayfairCipher} builds the matrix, prepares letter pairs,
+encrypts and decrypts. The project targets .NET 10. The excerpts below
+are taken directly from the current source~\cite{ref:source}; empty lines
+are compressed for readability.
+
+\codepart{100}{125}
+\noindent\textit{Comment.} \texttt{Normalize} replaces cedilla variants,
+converts text to uppercase, merges J into I and removes ordinary spaces.
+It then checks every remaining character against the 30 matrix symbols.
+Digits, punctuation, tabs and other unsupported characters are rejected.
+The error identifies the rejected character and states the accepted letters.
+
+\codepart{15}{25}
+\noindent\textit{Comment.} The constructor forbids spaces in the keyword,
+then normalizes it and enforces a minimum length of seven letters. This
+check occurs \emph{before} duplicate removal; repeated letters are allowed
+in a valid keyword. Empty messages are rejected by \texttt{Encrypt}, and
+\texttt{Decrypt} requires a nonempty, even-length ciphertext after normalization.
+
+\clearpage
+\section{Building the keyword matrix}
+\codepart{5}{9}
+\noindent\textit{Comment.} The matrix alphabet contains 30 symbols because
+J uses the I cell. The dimensions are six rows and five columns.
+
+\codepart{127}{159}
+\noindent\textit{Comment.} The first loop retains each keyword letter once,
+in order of first appearance. The second loop appends unused alphabet
+letters. The nested loops fill the matrix from left to right, row by row.
+This produces exactly one occurrence of every matrix symbol.
+
+For example, the key \texttt{criptografie} becomes
+\texttt{CRIPTOGRAFIE}; its distinct letters are \texttt{CRIPTOGAFE}.
+The resulting matrix is
+\begin{center}\setstretch{1.15}
+\begin{tabular}{ccccc}\toprule
+C & R & I/J & P & T\\
+O & G & A & F & E\\
+Ă & Â & B & D & H\\
+Î & K & L & M & N\\
+Q & S & Ș & Ț & U\\
+V & W & X & Y & Z\\\bottomrule
+\end{tabular}\end{center}
+\texttt{FindPosition} locates a letter by scanning the rows and columns.
+\texttt{PrintMatrix} displays the same cells, labelling the I cell as I/J.
+
+\clearpage
+\section{Preparing pairs and inserting fillers}
+\texttt{PreparePairs} scans the normalized message using an index. The
+first letter of the next pair is \texttt{message[index]}. The filler is
+X, except when that letter is itself X, in which case the filler is Q.
+The following branches decide the second letter and how far to advance:
+\codepart{172}{190}
+\noindent\textit{Comment.} If only one letter remains, the method appends
+a filler and consumes one original letter. If the next two letters are
+identical, it forms a pair with a filler and also advances by only one:
+the second original letter must be reconsidered. Otherwise, it consumes
+both letters. Each constructed pair is added to a \texttt{List<string>}.
+
+\begin{table}[H]\caption{Pair preparation for BALLOON}
+\centering
+\begin{tabular}{cllc}\toprule
+Index & Next letters & Pair produced & Next index\\\midrule
+0 & BA & BA & 2\\
+2 & LL & LX & 3\\
+3 & LO & LO & 5\\
+5 & ON & ON & 7\\\bottomrule
+\end{tabular}\end{table}
+The prepared text is \texttt{BALXLOON}, or \texttt{BA LX LO ON}.
+Only repeated letters inside the current pair are separated. For example,
+\texttt{ABBA} already splits into \texttt{AB BA} and needs no filler.
+For \texttt{XX}, the method produces \texttt{XQ XQ}; for a final X, it
+produces \texttt{XQ}. This prevents an identical-letter filler pair.
+
+\clearpage
+\section{Transforming pairs and reversing the cipher}
+\codepart{196}{225}
+\noindent\textit{Comment.} \texttt{FindPosition} supplies the coordinates
+of the two input letters. The three branches implement the same-row,
+same-column and rectangle rules. \texttt{Encrypt} passes direction 1;
+\texttt{Decrypt} passes direction $-1$. The result letters are read from
+the matrix, and one short console line shows the input pair, output pair
+and rule used.
+
+During encryption, the message is normalized and sent through
+\texttt{PreparePairs}. During decryption, the ciphertext is normalized and
+split directly into two-letter substrings; no fillers are inserted.
+Both methods concatenate the transformed pairs and return a string.
+
+The console prints the normalized key, distinct keyword letters, matrix,
+normalized message and prepared pairs before the transformations. Filler
+insertions are reported where they occur. The final output is either the
+ciphertext or the recovered prepared plaintext. Word spaces, capitalization,
+the original I/J choice and ambiguous filler letters are not reconstructed
+automatically.
+
+\clearpage
+\chapter{Results and verification}
+\section{Manual check of all three rules}
+The project builds successfully with zero compiler warnings and errors.
+The console transcripts in this chapter were captured from the running,
+unchanged program. For a matrix that is especially easy to verify by hand,
+I used the seven-letter key \texttt{AĂÂBCDE}. Its matrix follows the base
+alphabet order:
+\begin{center}\setstretch{1.15}
+\begin{tabular}{c|ccccc}
+ & 1 & 2 & 3 & 4 & 5\\\hline
+1 & A & Ă & Â & B & C\\
+2 & D & E & F & G & H\\
+3 & I/J & Î & K & L & M\\
+4 & N & O & P & Q & R\\
+5 & S & Ș & T & Ț & U\\
+6 & V & W & X & Y & Z\\
+\end{tabular}\end{center}
+The coordinates in Table~\ref{tab:rules} start at one for convenient manual
+checking. The code uses zero-based array indices.
+\begin{table}[H]\caption{Manual encryption and inverse checks}
+\label{tab:rules}\centering\small
+\begin{tabular}{cllcc}\toprule
+Input & Input coordinates & Rule & Cipher pair & Decrypts to\\\midrule
+AC & (1,1), (1,5) & Same row & ĂA & AC\\
+AV & (1,1), (6,1) & Same column & DA & AV\\
+AȚ & (1,1), (5,4) & Rectangle & BS & AȚ\\\bottomrule
+\end{tabular}\end{table}
+For AC, C wraps from column 5 to column 1. For AV, V wraps from row 6 to
+row 1. For AȚ, the opposite rectangle corners contain B and S.
+
+The diagnostic input \texttt{AC AV AȚ} exercises all three rules in one run:
+\consolepart{rules_encrypt}
+Decrypting \texttt{ĂA DA BS} with the same key gives \texttt{ACAVAȚ}.
+This confirms the inverse left/up shifts and the unchanged rectangle rule.
+
+\clearpage
+\section{Repeated letters and decryption}
+For key \texttt{AĂÂBCDE} and input \texttt{bal loon}, the program removes
+the input space, converts the text to uppercase and inserts X between
+the repeated L letters:
+\consolepart{balloon_encrypt}
+
+With the same key, decrypting \texttt{CĂ KY ÎQ PO} returns the prepared
+plaintext rather than deleting the inserted X:
+\consolepart{balloon_decrypt}
+The result \texttt{BALXLOON} agrees with the prepared encryption input.
+The user can identify the inserted X and restore the intended word spacing.
+Removing every X automatically would also remove genuine plaintext letters.
+
+For the boundary case \texttt{XX}, the program prints
+\texttt{Pairs: XQ XQ} and produces \texttt{YPYP}. For a single input A,
+it appends X, prints \texttt{Pairs: AX} and produces \texttt{ÂV}.
+These results confirm both filler selection and final-letter padding.
+
+\clearpage
+\section{Romanian text and a permuted keyword matrix}
+I also used the keyword \texttt{criptografie} and the Romanian input
+\texttt{ştiinţă şi ţară}. The cedilla variants are accepted and normalized
+to comma-below letters; the resulting matrix is the one shown in Section 2.2.
+\consolepart{romanian_encrypt}
+The ciphertext is \texttt{UIAITLQDXAȘFCÂ}. Decrypting it with the same key
+returns \texttt{ȘTIXINȚĂȘIȚARĂ}: the same normalized message with the
+inserted X retained. This run checks Romanian diacritics, lowercase input,
+spaces, duplicate keyword letters and a keyword-dependent alphabet order.
+
+\section{Validation and input recovery}
+The program rejects invalid input and repeats the corresponding prompt.
+Table~\ref{tab:validation} summarizes captured validation runs; the full
+console transcripts are saved in \texttt{evidence/}.
+\begin{table}[H]\caption{Input validation cases and observed responses}
+\label{tab:validation}\centering\small
+\begin{tabularx}{\textwidth}{l l X}\toprule
+Field & Input & Response\\\midrule
+Keyword & \texttt{secret} & Minimum length is seven letters before removing duplicates.\\
+Keyword & \texttt{cripto1} & Character 1 is rejected; the permitted Romanian letters are stated.\\
+Keyword & \texttt{cripto grafie} & Spaces in the keyword are rejected.\\
+Message & Empty input & At least one Romanian letter is required.\\
+Message & \texttt{salut!} & Character ! is rejected; the permitted Romanian letters are stated.\\
+Message & \texttt{salut2} & Character 2 is rejected; the permitted Romanian letters are stated.\\
+Ciphertext & \texttt{ABC} & A nonzero, even number of letters is required.\\\bottomrule
+\end{tabularx}\end{table}
+After invalid keys, supplying \texttt{AĂÂBCDE} continues the operation.
+After invalid message characters, \texttt{Salut} is accepted. After the
+odd-length ciphertext \texttt{ABC}, supplying \texttt{ĂADABS} successfully
+decrypts to \texttt{ACAVAȚ}. Thus an error does not terminate the program.
+
+\clearpage
+\input{conclusion.tex}
+\section{Verification coverage and source code}
+For each of two keyed matrices, I checked all $30\times29=870$ ordered
+pairs of distinct letters against an independent coordinate calculation,
+then decrypted the results. Both sets passed: 1,740 pair cases in total.
+The checks also covered repeated letters, alternate fillers, odd-length
+plaintext, Romanian normalization, the minimum key length, invalid input
+and decryption back to the prepared plaintext. The verification run passed
+3,537 assertions. The source files were not modified while preparing this report.
+
+Source files: \texttt{Program.cs} and \texttt{PlayfairCipher.cs},
+in \texttt{lab\_03/code/playfair/}. The project repository is
+\begin{center}
+\url{https://github.com/MiHCraft/Cryptography_UTM}
+\end{center}
+
+\vspace{0.6cm}
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\input{bibliography.tex}
+\end{document}

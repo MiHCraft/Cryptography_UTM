@@ -1,0 +1,24 @@
+{
+  "variant": 19,
+  "letters": 3230,
+  "observed_cipher_letters": 25,
+  "matches_pdf_variant_19_letters": true,
+  "re_encryption_exact_match": true,
+  "nonletters_preserved": true,
+  "unobserved_pair": "M -> Z (by elimination)",
+  "input_artifacts": [
+    "trailing backslash from paste excluded",
+    "U+0002 separator displayed as hyphen at POST-TELEGRAPH"
+  ],
+  "recorded_substitutions": [
+    "W -> T",
+    "Q -> H",
+    "V -> E",
+    "P -> S",
+    "F -> Y",
+    "Z -> M",
+    "T -> A"
+  ],
+  "re_encryption_of_supplied_paste_exact_match": true,
+  "online_analyzer_plaintext_matches": true
+}

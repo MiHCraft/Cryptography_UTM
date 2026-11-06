@@ -1,0 +1,28 @@
+
+=== Romanian Caesar Cipher ===
+1. Standard Caesar Cipher
+2. Two-Key Caesar Cipher
+0. Exit
+Choose cipher: 1
+
+1. Encrypt
+2. Decrypt
+Choose operation: 1
+Enter numeric key (1-30): 3
+Enter message: cifrul cezar
+
+Encryption Table (key = 3)
+
+x   |  0|  1|  2|  3|  4|  5|  6|  7|  8|  9| 10| 11| 12| 13| 14| 15| 16| 17| 18| 19| 20| 21| 22| 23| 24| 25| 26| 27| 28| 29| 30|
+m   |  A|  Ă|  Â|  B|  C|  D|  E|  F|  G|  H|  I|  Î|  J|  K|  L|  M|  N|  O|  P|  Q|  R|  S|  Ș|  T|  Ț|  U|  V|  W|  X|  Y|  Z|
+x+k |  3|  4|  5|  6|  7|  8|  9| 10| 11| 12| 13| 14| 15| 16| 17| 18| 19| 20| 21| 22| 23| 24| 25| 26| 27| 28| 29| 30|  0|  1|  2|
+c   |  B|  C|  D|  E|  F|  G|  H|  I|  Î|  J|  K|  L|  M|  N|  O|  P|  Q|  R|  S|  Ș|  T|  Ț|  U|  V|  W|  X|  Y|  Z|  A|  Ă|  Â|
+
+Input:  CIFRULCEZAR
+Result: FKITXOFHÂBT
+
+=== Romanian Caesar Cipher ===
+1. Standard Caesar Cipher
+2. Two-Key Caesar Cipher
+0. Exit
+Choose cipher: 

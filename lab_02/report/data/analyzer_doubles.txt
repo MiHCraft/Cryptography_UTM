@@ -1,0 +1,5 @@
+The most common double letters in the english language are:
+SS,EE,TT,FF,LL,MM,OO
+
+The most common double letters in the message are:
+SS,PP,WW,CC,VV,II,UU,NN,ZZ,HH,GG
