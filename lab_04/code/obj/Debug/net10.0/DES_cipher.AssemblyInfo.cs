@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DES_cipher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b4ab16df1b7265751794e1839b20860f67048c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1867e3c4035a43e7c56d2def6d29d21b88b3bc3")]
 [assembly: System.Reflection.AssemblyProductAttribute("DES_cipher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DES_cipher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

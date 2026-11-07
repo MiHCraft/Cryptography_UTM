@@ -1,9 +1,0 @@
-Normalized: BALLOON
-Insert X between repeated L letters.
-Pairs: BA LX LO ON
-BA -> CĂ  same row
-LX -> KY  rectangle
-LO -> ÎQ  rectangle
-ON -> PO  same row
-
-Ciphertext: CĂKYÎQPO

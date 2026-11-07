@@ -1,7 +1,0 @@
-Normalized: ACAVAȚ
-Pairs: AC AV AȚ
-AC -> ĂA  same row
-AV -> DA  same column
-AȚ -> BS  rectangle
-
-Ciphertext: ĂADABS

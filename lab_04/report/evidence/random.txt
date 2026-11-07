@@ -1,0 +1,30 @@
+User@Mac Cryptography_UTM %  dotnet run --project lab_04/code/DES_cipher.csproj
+Hello. You are at the start of the 8-th task program. I need to ask you, would you like to introduce data or to generate it?
+Enter '1' to introduce data or '2' to generate it randomly.
+2
+You have chosen to generate data randomly.
+Randomly generated L[k-1] = 0x6356DBD6 and S-boxes result = 0x6D3D8BCA
+Data generated
+=== Part of the algorithm started. ===
+You have provided the following inputs:
+L[k-1] = 0x6356DBD6
+S-boxes result = 0x6D3D8BCA
+
+The same in binary format:
+L[k-1] = 01100011010101101101101111010110
+S-boxes result = 01101101001111011000101111001010
+
+Step 1: Apply permutation P to the S-boxes result to obtain f.
+Permutation P table:
+16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25
+Input to permutation P: 0x6D3D8BCA (01101101001111011000101111001010)
+Result of permutation P: f = 0x9D3AF255 (10011101001110101111001001010101)
+
+Step 2: Calculate R[k] by performing XOR between L[k-1] and f.
+R[k] = L[k-1] XOR f = 0x6356DBD6 XOR 0x9D3AF255 = 0xFE6C2983
+The XORing in binary:
+01100011010101101101101111010110 XOR 10011101001110101111001001010101 = 11111110011011000010100110000011
+
+[Result] R[k] = 0xFE6C2983
+=== Part of the algorithm finished. ===
+User@Mac Cryptography_UTM %

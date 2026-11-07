@@ -1,9 +1,0 @@
-Normalized: CĂKYÎQPO
-Pairs: CĂ KY ÎQ PO
-CĂ -> BA  same row
-KY -> LX  rectangle
-ÎQ -> LO  rectangle
-PO -> ON  same row
-
-Decrypted text: BALXLOON
-Remove inserted fillers and restore spaces manually; I/J share a cell.

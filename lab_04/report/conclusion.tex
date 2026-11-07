@@ -1,21 +1,24 @@
 \chapter{Conclusions}
-In this laboratory work, I implemented the Romanian Playfair cipher using
-a keyword matrix with six rows and five columns. Merging J into I made
-room for the 31-letter Romanian alphabet while keeping Î as a separate
-letter. The program handles uppercase and lowercase input, Romanian
-cedilla variants and ordinary message spaces.
+In this laboratory work, I implemented the last two steps of the DES
+round function and update needed to find the new right half. The
+assignment starts with the combined output of the eight S-boxes, so
+the same calculation can be used for any round once that word and
+the previous left half are available.
 
-I verified the three transformation rules and their inverses: horizontal
-shifts, vertical shifts and rectangle substitution. The examples also
-confirmed the importance of preparing pairs correctly. When two current
-letters are identical, only the first original letter is consumed; the
-second must be reconsidered. X is the usual filler, with Q used when an
-X would otherwise create an identical pair.
+The permutation required careful attention to bit numbering. The DES
+table counts positions from the most significant bit, while the C\#
+code uses right shifts to read a bit. Translating a table position
+$p$ into a shift of $32-p$ lets the program build the output word in
+the order specified by the table.
 
-The console output makes the process easy to check: it shows the matrix,
-prepared pairs and one short explanation for each transformation.
-Decryption correctly recovers the prepared plaintext. Restoring word
-spaces, distinguishing an original J from I and resolving filler letters
-remain manual tasks because this information is not preserved by the
-cipher. The work reinforced my understanding of pair substitution, modular
-wraparound and input validation through a small, readable implementation.
+The XOR then combines the permuted word with the previous left half.
+Its reversibility is part of the Feistel structure. Applying the
+same XOR to $R_k$ recovers $L_{k-1}$, and the previous right half is
+available as $L_k$. This connects the two implemented steps to the
+way DES reverses a round.
+
+The random mode provides inputs for a quick demonstration. To repeat
+that calculation, I can enter the two displayed hexadecimal values
+in manual mode. Showing the binary and hexadecimal forms together
+makes it easier to follow the bit operations and read the final
+32-bit result.
