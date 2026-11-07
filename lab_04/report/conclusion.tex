@@ -1,0 +1,21 @@
+\chapter{Conclusions}
+In this laboratory work, I implemented the Romanian Playfair cipher using
+a keyword matrix with six rows and five columns. Merging J into I made
+room for the 31-letter Romanian alphabet while keeping Î as a separate
+letter. The program handles uppercase and lowercase input, Romanian
+cedilla variants and ordinary message spaces.
+
+I verified the three transformation rules and their inverses: horizontal
+shifts, vertical shifts and rectangle substitution. The examples also
+confirmed the importance of preparing pairs correctly. When two current
+letters are identical, only the first original letter is consumed; the
+second must be reconsidered. X is the usual filler, with Q used when an
+X would otherwise create an identical pair.
+
+The console output makes the process easy to check: it shows the matrix,
+prepared pairs and one short explanation for each transformation.
+Decryption correctly recovers the prepared plaintext. Restoring word
+spaces, distinguishing an original J from I and resolving filler letters
+remain manual tasks because this information is not preserved by the
+cipher. The work reinforced my understanding of pair substitution, modular
+wraparound and input validation through a small, readable implementation.

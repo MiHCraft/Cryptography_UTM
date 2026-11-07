@@ -1,0 +1,36 @@
+
+=== Romanian Playfair ===
+1. Encrypt
+2. Decrypt
+0. Exit
+Choose operation: Keyword (at least 7 letters, no spaces): 
+Key: CRIPTOGRAFIE
+Unique key: CRIPTOGAFE
+
+Matrix (I/J share a cell; Î is separate):
+C    R    I/J  P    T    
+O    G    A    F    E    
+Ă    Â    B    D    H    
+Î    K    L    M    N    
+Q    S    Ș    Ț    U    
+V    W    X    Y    Z    
+
+Ciphertext: 
+Normalized: UIAITLQDXAȘFCÂ
+Pairs: UI AI TL QD XA ȘF CÂ
+UI -> ȘT  rectangle
+AI -> IX  same column
+TL -> IN  rectangle
+QD -> ȚĂ  rectangle
+XA -> ȘI  same column
+ȘF -> ȚA  rectangle
+CÂ -> RĂ  rectangle
+
+Decrypted text: ȘTIXINȚĂȘIȚARĂ
+Remove inserted fillers and restore spaces manually; I/J share a cell.
+
+=== Romanian Playfair ===
+1. Encrypt
+2. Decrypt
+0. Exit
+Choose operation: 

@@ -1,0 +1,33 @@
+
+=== Romanian Playfair ===
+1. Encrypt
+2. Decrypt
+0. Exit
+Choose operation: Keyword (at least 7 letters, no spaces): 
+Key: AĂÂBCDE
+Unique key: AĂÂBCDE
+
+Matrix (I/J share a cell; Î is separate):
+A    Ă    Â    B    C    
+D    E    F    G    H    
+I/J  Î    K    L    M    
+N    O    P    Q    R    
+S    Ș    T    Ț    U    
+V    W    X    Y    Z    
+
+Ciphertext: 
+Normalized: CĂKYÎQPO
+Pairs: CĂ KY ÎQ PO
+CĂ -> BA  same row
+KY -> LX  rectangle
+ÎQ -> LO  rectangle
+PO -> ON  same row
+
+Decrypted text: BALXLOON
+Remove inserted fillers and restore spaces manually; I/J share a cell.
+
+=== Romanian Playfair ===
+1. Encrypt
+2. Decrypt
+0. Exit
+Choose operation: 

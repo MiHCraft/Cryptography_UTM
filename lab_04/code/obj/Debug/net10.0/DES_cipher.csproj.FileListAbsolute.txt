@@ -1,0 +1,14 @@
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.AssemblyInfoInputs.cache
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.AssemblyInfo.cs
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.csproj.CoreCompileInputs.cache
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/bin/Debug/net10.0/DES_cipher
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/bin/Debug/net10.0/DES_cipher.deps.json
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/bin/Debug/net10.0/DES_cipher.runtimeconfig.json
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/bin/Debug/net10.0/DES_cipher.dll
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/bin/Debug/net10.0/DES_cipher.pdb
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.dll
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/refint/DES_cipher.dll
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.pdb
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/DES_cipher.genruntimeconfig.cache
+/Users/mihailpancenco/Documents/Univer/sem5/Cryptography/labs/Cryptography_UTM/lab_04/code/obj/Debug/net10.0/ref/DES_cipher.dll

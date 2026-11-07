@@ -1,0 +1,6 @@
+Normalized: A
+Add X after the final A.
+Pairs: AX
+AX -> ÂV  rectangle
+
+Ciphertext: ÂV

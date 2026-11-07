@@ -1,0 +1,8 @@
+Normalized: ĂADABS
+Pairs: ĂA DA BS
+ĂA -> AC  same row
+DA -> AV  same column
+BS -> AȚ  rectangle
+
+Decrypted text: ACAVAȚ
+Remove inserted fillers and restore spaces manually; I/J share a cell.

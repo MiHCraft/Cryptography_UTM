@@ -1,0 +1,8 @@
+Normalized: XX
+Insert Q between repeated X letters.
+Add Q after the final X.
+Pairs: XQ XQ
+XQ -> YP  rectangle
+XQ -> YP  rectangle
+
+Ciphertext: YPYP
